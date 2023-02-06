@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import backButton from "../../assets/images/backButton.svg";
 import "../Registration/Registration.css";
 import emailIcon from "../../assets/images/material-symbols_alternate-email.svg";
@@ -7,6 +7,8 @@ import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
 function Registration({ data, setData }) {
+
+  const navigate = useNavigate();
 
   const [imageFile, setImageFile] = useState(null);
 const [imageUrl, setImageUrl] = useState(null);
@@ -156,7 +158,7 @@ const [imageUrl, setImageUrl] = useState(null);
         </div>
         <div className="buttons flex flex-row justify-between">
           <button className="invisible">უკან</button>
-          <button>შემდეგი</button>
+          <button onClick={() => navigate('/experience')}>შემდეგი</button>
         </div>
       </section>
       <section className="w-2/5 p-20 relative">
