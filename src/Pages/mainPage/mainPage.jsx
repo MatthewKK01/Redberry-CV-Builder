@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
-import logo from "./images/logo-redbery.svg";
+import logo from "../../assets/images/logo-redbery.svg";
 import './mainPage.css'
-import logoBG from './images/LOGO-401.svg';
+import logoBG from '../../assets/images/LOGO-401.svg';
 
 function MainPage() {
   return (
@@ -12,7 +12,7 @@ function MainPage() {
       </header>
       <section className="">
         <div className="container">
-        <Link to='/registration'>ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</Link>
+        <Link to='/personal'>ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</Link>
         </div>
         <img src={logoBG} alt="logo-agecy" className="logo-agency mix-blend-multiply absolute" />
       </section>

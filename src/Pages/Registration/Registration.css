@@ -11,6 +11,16 @@ color: #FFFFFF;
 width: 151px;
 height: 48px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .textinput{
     padding:14px;
