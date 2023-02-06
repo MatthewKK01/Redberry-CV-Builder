@@ -10,7 +10,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
-
+hr{
+  color: #C1C1C1;
+  background-color: #C1C1C1;
+}
+.buttons{
+  position: absolute;
+  gap: 562px;
+  bottom: 65px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
