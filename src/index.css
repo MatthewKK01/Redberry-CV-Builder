@@ -19,6 +19,46 @@ hr{
   gap: 562px;
   bottom: 65px;
 }
+button{
+  background: #6B40E3;
+  border-radius: 4px;
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  width: 151px;
+  height: 48px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  
+  .textinput{
+      padding:10px;
+      height: 48px;
+      background: #FFFFFF;
+      border: 1px solid #BCBCBC;
+      border-radius: 4px;
+  }
+  p{
+      font-weight: 300;
+  font-size: 14px;
+  }
+  label{
+      font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

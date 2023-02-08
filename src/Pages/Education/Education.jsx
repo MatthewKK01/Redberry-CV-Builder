@@ -5,8 +5,22 @@ import "../Registration/Registration.css";
 import emailIcon from "../../assets/images/material-symbols_alternate-email.svg";
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
+import axios from "axios";
 
 function Education({data,setData}) {
+
+  const [array, setArray] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("https://resume.redberryinternship.ge/api/degrees");
+      setArray(result.data);
+      console.log(result.data)
+    };
+    fetchData();
+  }, []);
+
+
   const navigate = useNavigate();
   return (
     <div className="flex min-h-screen relative">
@@ -18,9 +32,100 @@ function Education({data,setData}) {
           <h2 className="mb-3 text-2xl font-bold">განათლება</h2>
           <h4 className="text-xl font-normal">3/3</h4>
         </header>
+        <form className="flex flex-col mb-8">
+            <label className=" font-medium text-base" htmlFor="name">
+              სასწავლებელი
+            </label>
+            <input
+              onChange={(e) =>
+                setData((props) => {
+                  return {
+                    ...props,
+                    educations: {
+                      ...props.educations,
+                      institute: e.target.value,
+                    }
+                  };
+                })
+              }
+              className="textinput w-full my-2"
+              type="text"
+              name="name"
+            />
+            <p>მინიმუმ 2 სიმბოლო</p>
+          </form>
+          <div className="flex gap-14 justify-between mb-9">
+          <form className="flex flex-col">
+            <label className="mb-2 font-medium text-base" htmlFor="degree">
+              ხარისხი
+            </label>
+            <select className="textinput" onChange={(e) =>
+                setData((props) => {
+                  return {
+                    ...props,
+                    educations:{
+                      ...props.educations,
+                      degree_id : e.target.key
+                    }
+                  };
+                })
+              } name="degree">
+            {array.map((item)=>{
+              return(
+                  <option className="textinput" key={item.id} value={item.title}>{item.title}</option>
+                  )
+                })}
+                </select>
+
+          </form>
+          <form className="flex flex-col mb-8">
+            <label className="mb-2 font-medium text-base" htmlFor="due_date">
+              დამთავრების რიცხვი
+            </label>
+            <input
+              onChange={(e) =>
+                setData((props) => {
+                  return {
+                    ...props,
+                    educations:{
+                      ...props.educations,
+                      due_date : e.target.value
+                    }
+                  };
+                })
+              }
+              className="textinput w-[370px]"
+              type="date"
+              name="due_date"
+            />
+
+          </form>
+          
+        </div>
+        <form className="flex flex-col">
+          <label htmlFor="description" className="mb-2 font-medium text-base">აღწერა</label>
+          <textarea
+            onChange={(e) =>
+              setData((props) => {
+                return {
+                  ...props,
+                  educations : {
+                    ...props.educations,
+                    description : e.target.value
+                  }
+                };
+              })
+            }
+            className="px-4 py-1 resize-none border border-[#BCBCBC]"
+            name="description"
+            id=""
+            cols="10"
+            rows="6"
+          ></textarea>
+          </form>
         <div className="buttons flex flex-row justify-between">
           <button onClick={() => navigate('/experience')}>უკან</button>
-          <button>შემდეგი</button>
+          <button onClick={() => navigate("/result")}>დასრულება</button>
         </div>
       </section>
 

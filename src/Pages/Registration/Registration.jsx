@@ -6,12 +6,12 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
-function Registration({ data, setData }) {
+function Registration({ data, setData,clearState }) {
 
   const navigate = useNavigate();
 
   const [imageFile, setImageFile] = useState(null);
-const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const handleFileChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -46,14 +46,14 @@ const [imageUrl, setImageUrl] = useState(null);
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
         <Link to="/">
-          <img src={backButton} alt="backButton" className="absolute left-12" />
+          <img onClick={clearState} src={backButton} alt="backButton" className="absolute left-12" />
         </Link>
         <header className="mb-20 flex flex-row items-center justify-between w-full border-b-2 border-black">
           <h2 className="mb-3 text-2xl font-bold">პირადი ინფო</h2>
           <h4 className="text-xl font-normal">1/3</h4>
         </header>
         <div className="flex gap-14 justify-between mb-14">
-          <div className="flex flex-col">
+          <form className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="name">
               სახელი
             </label>
@@ -71,8 +71,8 @@ const [imageUrl, setImageUrl] = useState(null);
               name="name"
             />
             <p>მინიმუმ 2 ასო, ქართული ასოები</p>
-          </div>
-          <div className="flex flex-col">
+          </form>
+          <form className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="surname">
               გვარი
             </label>
@@ -90,7 +90,7 @@ const [imageUrl, setImageUrl] = useState(null);
               name="surname"
             />
             <p className="mt-2">მინიმუმ 2 ასო, ქართული ასოები</p>
-          </div>
+          </form>
         </div>
         <div className="flex flex-row mb-8">
           <label htmlFor="photo">პირადი ფოტოს ატვირთვა</label>

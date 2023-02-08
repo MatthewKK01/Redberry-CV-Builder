@@ -7,10 +7,9 @@ header{
     top:0px;
 }
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  font-weight: 500;
+font-size: 20px;
+line-height: 24px;
   padding: 18px 60px;
   gap: 20px;
   width: 464px;

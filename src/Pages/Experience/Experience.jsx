@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import backButton from "../../assets/images/backButton.svg";
 import "../Experience/Experience.css";
@@ -29,7 +29,10 @@ function Experience({ data, setData }) {
                 setData((props) => {
                   return {
                     ...props,
-                    position: e.target.value,
+                    experiences: {
+                      ...props.experiences,
+                      position: e.target.value,
+                    },
                   };
                 })
               }
@@ -48,7 +51,10 @@ function Experience({ data, setData }) {
                 setData((props) => {
                   return {
                     ...props,
-                    employer: e.target.value,
+                    experiences : {
+                      ...props.experiences,
+                      employer: e.target.value,
+                    }
                   };
                 })
               }
@@ -67,7 +73,10 @@ function Experience({ data, setData }) {
                 setData((props) => {
                   return {
                     ...props,
-                    start_date: e.target.value,
+                    experiences : {
+                      ...props.experiences,
+                      start_date: e.target.value,
+                    }
                   };
                 })
               }
@@ -83,7 +92,10 @@ function Experience({ data, setData }) {
                 setData((props) => {
                   return {
                     ...props,
-                    due_date: e.target.value,
+                    experiences : {
+                      ...props.experiences,
+                      due_date: e.target.value,
+                    }
                   };
                 })
               }
@@ -93,24 +105,27 @@ function Experience({ data, setData }) {
             />
           </form>
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="about">აღწერა</label>
+        <form className="flex flex-col">
+          <label htmlFor="description">აღწერა</label>
           <textarea
             onChange={(e) =>
               setData((props) => {
                 return {
                   ...props,
-                  description: e.target.value,
+                  experiences:{
+                    ...props.experiences,
+                    description: e.target.value
+                  }
                 };
               })
             }
             className="px-4 py-1 resize-none border border-[#BCBCBC]"
-            name="about"
+            name="description"
             id=""
             cols="10"
             rows="4"
           ></textarea>
-        </div>
+        </form>
         <hr className="h-px mt-14 mb-8 border-0" />
         <button className="moreexperiencebutton mb-5">მეტი გამოცდილების დამატება</button>
         <div className="buttons flex flex-row justify-between">
