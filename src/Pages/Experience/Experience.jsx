@@ -159,6 +159,19 @@ function Experience({ data, setData }) {
             {data.about_me}
           </p>
         </div>
+        <hr className="mt-5 mb-6" />
+        <div>
+          {data.experiences && (<h2 className=" font-bold text-lg text-[#F93B1D]">გამოცდილება</h2>)}
+          <div className="flex mt-4">
+          {data.experiences.position && (<h1 className="text-[#1A1A1A] font-medium text-base leading-5">{data.experiences.position},&nbsp;</h1>)}
+          {data.experiences.employer && (<span className="text-[#1A1A1A] font-medium text-base leading-5">{data.experiences.employer}</span>)}
+          </div>
+          <div className="dates flex mb-4">
+            {data.experiences.start_date && (<p className="text-[#909090] text-base font-normal italic">{data.experiences.start_date}&nbsp;-</p>)}
+            {data.experiences.due_date && (<p className="text-[#909090] text-base font-normal italic">&nbsp;{data.experiences.due_date}</p>)}
+          </div>
+          {data.experiences.description && (<p className="font-normal text-base capitalize leading-6 text-black">{data.experiences.description}</p>)}
+        </div>
 
         <img
           src={logoRedberry}
