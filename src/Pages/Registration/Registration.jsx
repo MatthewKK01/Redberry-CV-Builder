@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import backButton from "../../assets/images/backButton.svg";
 import "../Registration/Registration.css";
 import emailIcon from "../../assets/images/material-symbols_alternate-email.svg";
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
-function Registration({ data, setData,clearState }) {
-
+function Registration({ data, setData, clearState }) {
   const navigate = useNavigate();
 
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
   const handleFileChange = (e) => {
+    const clone1 = (data.image = e.target.value);
+    setData((props) => {
+      return {
+        ...props,
+        clone1,
+      };
+    });
     setImageFile(e.target.files[0]);
   };
 
@@ -32,21 +38,27 @@ function Registration({ data, setData,clearState }) {
   const renderImage = () => {
     if (!imageUrl) {
       return null;
+    }else{
+      return (
+        <img
+          className="absolute top-[75px] object-cover right-[48px] rounded-full w-64 h-64"
+          src={imageUrl}
+          alt="Preview"
+        />
+      );
     }
-    return (
-      <img
-        className="absolute top-[75px] right-[48px] rounded-full w-64 h-64"
-        src={imageUrl}
-        alt="Preview"
-      />
-    );
   };
 
   return (
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
         <Link to="/">
-          <img onClick={clearState} src={backButton} alt="backButton" className="absolute left-12" />
+          <img
+            onClick={clearState}
+            src={backButton}
+            alt="backButton"
+            className="absolute left-12"
+          />
         </Link>
         <header className="mb-20 flex flex-row items-center justify-between w-full border-b-2 border-black">
           <h2 className="mb-3 text-2xl font-bold">პირადი ინფო</h2>
@@ -58,6 +70,7 @@ function Registration({ data, setData,clearState }) {
               სახელი
             </label>
             <input
+              value={data.name }
               onChange={(e) =>
                 setData((props) => {
                   return {
@@ -77,6 +90,7 @@ function Registration({ data, setData,clearState }) {
               გვარი
             </label>
             <input
+              value={data.surname}
               onChange={(e) =>
                 setData((props) => {
                   return {
@@ -101,6 +115,7 @@ function Registration({ data, setData,clearState }) {
         <div className="flex flex-col mb-8">
           <label htmlFor="about">ჩემ შესახებ (არასავალდებულო)</label>
           <textarea
+            value={data.about_me}
             onChange={(e) =>
               setData((props) => {
                 return {
@@ -121,6 +136,7 @@ function Registration({ data, setData,clearState }) {
             ელ.ფოსტა
           </label>
           <input
+            value={data.email}
             onChange={(e) =>
               setData((props) => {
                 return {
@@ -140,6 +156,7 @@ function Registration({ data, setData,clearState }) {
             მობილურის ნომერი
           </label>
           <input
+            value={data.phone_number}
             onChange={(e) =>
               setData((props) => {
                 return {
@@ -158,14 +175,12 @@ function Registration({ data, setData,clearState }) {
         </div>
         <div className="buttons flex flex-row justify-between">
           <button className="invisible">უკან</button>
-          <button onClick={() => navigate('/experience')}>შემდეგი</button>
+          <button onClick={() => navigate("/experience")}>შემდეგი</button>
         </div>
       </section>
       <section className="w-2/5 p-20 relative">
         <div className="flex gap-5 mb-4">
-          <h1 className="font-bols text-4xl text-[#F93B1D]">
-            {data.name}
-          </h1>
+          <h1 className="font-bols text-4xl text-[#F93B1D]">{data.name}</h1>
           <h1 className="font-bols text-4xl text-[#F93B1D]">{data.surname}</h1>
         </div>
         <div className="flex flex-col gap-2">
@@ -174,7 +189,9 @@ function Registration({ data, setData,clearState }) {
             <p className="font-normal text-lg">{data.email}</p>
           </div>
           <div className="flex gap-2 items-center">
-            {data.phone_number && <img className="w-5" src={phoneIcon} alt="" />}
+            {data.phone_number && (
+              <img className="w-5" src={phoneIcon} alt="" />
+            )}
             <p className="font-normal text-lg">{data.phone_number}</p>
           </div>
         </div>
@@ -182,7 +199,9 @@ function Registration({ data, setData,clearState }) {
           {data.about_me && (
             <h2 className=" font-bold text-lg text-[#F93B1D]">ჩემს შესახებ</h2>
           )}
-          <p className="break-words w-8/12 font-normal text-base">{data.about_me}</p>
+          <p className="break-words w-8/12 font-normal text-base">
+            {data.about_me}
+          </p>
         </div>
         {renderImage()}
         <img

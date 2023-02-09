@@ -66,15 +66,15 @@ function App() {
   }
 
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data));
-  }, [data]);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('data'));
-    if (data) {
-     setData(data);
+    const storedData = JSON.parse(sessionStorage.getItem("formData"));
+    if (storedData) {
+      setData(storedData);
     }
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("formData", JSON.stringify(data));
+  }, [data]);
 
   return (
     <Routes>

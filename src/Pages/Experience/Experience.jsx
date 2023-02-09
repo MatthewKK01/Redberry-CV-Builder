@@ -25,6 +25,7 @@ function Experience({ data, setData }) {
               თანამდებობა
             </label>
             <input
+            value={data.experiences[0].position}
               onChange={(e) => {
                 const clone = data.experiences[0].position = e.target.value;
                 setData((props)=>{
@@ -45,6 +46,7 @@ function Experience({ data, setData }) {
               დამსაქმებელი
             </label>
             <input
+            value={data.experiences[0].employer}
               onChange={(e) => {
                 const clone = data.experiences[0].employer = e.target.value;
                 setData((props)=>{
@@ -65,6 +67,7 @@ function Experience({ data, setData }) {
           <form>
             <label htmlFor="startDate">დაწყების რიცხვი</label>
             <input
+            value={data.experiences[0].start_date}
               onChange={(e) => {
                 const clone = data.experiences[0].start_date = e.target.value;
                 setData((props)=>{
@@ -82,6 +85,7 @@ function Experience({ data, setData }) {
           <form>
             <label htmlFor="startDate">დამთავრების რიცხვი</label>
             <input
+            value={data.experiences[0].due_date}
               onChange={(e) => {
                 const clone = data.experiences[0].due_date = e.target.value;
                 setData((props)=>{
@@ -100,6 +104,7 @@ function Experience({ data, setData }) {
         <form className="flex flex-col">
           <label htmlFor="description">აღწერა</label>
           <textarea
+          value={data.experiences[0].description}
             onChange={(e) => {
               const clone = data.experiences[0].description = e.target.value;
               setData((props)=>{
