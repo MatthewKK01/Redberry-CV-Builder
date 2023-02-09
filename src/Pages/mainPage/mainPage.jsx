@@ -8,9 +8,10 @@ function MainPage() {
   const navigate = useNavigate();
   return (
     <main className="min-h-screen relative flex justify-center items-center">
-      <header className="border-[#1A1A1A] border-b py-[26px] absolute">
+      <header className="py-[26px] absolute top-6 left-16">
         <img src={logo} alt="logo-redberry"  />
       </header>
+        <hr className="border w-[1780px] absolute top-28 left-16 border-black"/>
       <section className="">
         <button onClick={() => navigate('/personal')} className="container">რეზიუმეს დამატება</button>
         <img src={logoBG} alt="logo-agecy" className="logo-agency mix-blend-multiply absolute" />

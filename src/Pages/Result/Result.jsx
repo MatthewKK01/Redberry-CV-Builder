@@ -4,8 +4,12 @@ import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
+import backButton from "../../assets/images/backButton.svg";
 
-function Result({ data }) {
+
+
+function Result({ data,clearState }) {
   toast('რეზიუმე წარმატებით გაიგზავნა  🎉', {
     position: "top-right",
     autoClose: 5000,
@@ -20,7 +24,16 @@ function Result({ data }) {
     <div className="w-scren h-screen flex justify-center items-center">
 
 <ToastContainer  />
+<Link to="/">
+          <img
+            onClick={clearState}
+            src={backButton}
+            alt="backButton"
+            className="absolute left-12 top-12"
+          />
+        </Link>
       <section className="w-2/5 p-20 relative border border-black">
+     
         <div className="flex gap-5 mb-4">
           <h1 className="font-bols text-4xl text-[#F93B1D]">{data.name}</h1>
           <h1 className="font-bols text-4xl text-[#F93B1D]">{data.surname}</h1>

@@ -6,49 +6,12 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
-function Registration({ data, setData, clearState }) {
+function Registration({ data, setData, clearState,handleImageChange,renderImage }) {
   const navigate = useNavigate();
 
-  const [imageFile, setImageFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
 
-  const handleFileChange = (e) => {
-    const clone1 = (data.image = e.target.value);
-    setData((props) => {
-      return {
-        ...props,
-        clone1,
-      };
-    });
-    setImageFile(e.target.files[0]);
-  };
 
-  useEffect(() => {
-    if (imageFile) {
-      setImageUrl(URL.createObjectURL(imageFile));
-    }
-
-    return () => {
-      if (imageUrl) {
-        URL.revokeObjectURL(imageUrl);
-      }
-    };
-  }, [imageFile]);
-
-  const renderImage = () => {
-    if (!imageUrl) {
-      return null;
-    }else{
-      return (
-        <img
-          className="absolute top-[75px] object-cover right-[48px] rounded-full w-64 h-64"
-          src={imageUrl}
-          alt="Preview"
-        />
-      );
-    }
-  };
-
+ 
   return (
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
@@ -109,7 +72,7 @@ function Registration({ data, setData, clearState }) {
         <div className="flex flex-row mb-8">
           <label htmlFor="photo">პირადი ფოტოს ატვირთვა</label>
           <label htmlFor="">
-            <input onChange={handleFileChange} type="file" name="photo" />
+            <input onChange={handleImageChange} type="file" name="photo" />
           </label>
         </div>
         <div className="flex flex-col mb-8">

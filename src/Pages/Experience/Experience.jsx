@@ -6,14 +6,14 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
-function Experience({ data, setData }) {
+function Experience({ data, setData,renderImage,clearState }) {
 
   const navigate = useNavigate();
   return (
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
         <Link to="/">
-          <img src={backButton} alt="backButton" className="absolute left-12" />
+          <img onClick={clearState} src={backButton} alt="backButton" className="absolute left-12" />
         </Link>
         <header className="mb-20 flex flex-row items-center justify-between w-full border-b-2 border-black">
           <h2 className="mb-3 text-2xl font-bold">გამოცდილება</h2>
@@ -156,6 +156,7 @@ function Experience({ data, setData }) {
             {data.about_me}
           </p>
         </div>
+        {renderImage()}
         <hr className="mt-5 mb-6" />
        {data.experiences.map(({position,employer,start_date,due_date,description})=>{
         return (

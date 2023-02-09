@@ -6,11 +6,9 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 import axios from "axios";
-import { toast } from "react-toastify";
 
-function Education({ data, setData }) {
+function Education({ data, setData, clearState, renderImage,sendDataToBackend }) {
   const [array, setArray] = useState([]);
-  const [degree, setDegree] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +22,7 @@ function Education({ data, setData }) {
   }, []);
 
   const handleSubmit = () => {
+    sendDataToBackend();
     navigate("/result");
   };
 
@@ -32,7 +31,12 @@ function Education({ data, setData }) {
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
         <Link to="/">
-          <img src={backButton} alt="backButton" className="absolute left-12" />
+          <img
+            onClick={clearState}
+            src={backButton}
+            alt="backButton"
+            className="absolute left-12"
+          />
         </Link>
         <header className="mb-20 flex flex-row items-center justify-between w-full border-b-2 border-black">
           <h2 className="mb-3 text-2xl font-bold">განათლება</h2>
@@ -92,7 +96,7 @@ function Education({ data, setData }) {
               დამთავრების რიცხვი
             </label>
             <input
-            value={data.educations[0].due_date}
+              value={data.educations[0].due_date}
               onChange={(e) => {
                 const clone1 = (data.educations[0].due_date = e.target.value);
                 setData((props) => {
@@ -113,7 +117,7 @@ function Education({ data, setData }) {
             აღწერა
           </label>
           <textarea
-          value={data.educations[0].description}
+            value={data.educations[0].description}
             onChange={(e) => {
               const clone1 = (data.educations[0].description = e.target.value);
               setData((props) => {
@@ -161,6 +165,7 @@ function Education({ data, setData }) {
             {data.about_me}
           </p>
         </div>
+        {renderImage()}
         <hr className="mt-5 mb-6" />
         {data.experiences.map(
           ({ position, employer, start_date, due_date, description }) => {
