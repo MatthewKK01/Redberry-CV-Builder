@@ -7,7 +7,7 @@ import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
 function Experience({ data, setData }) {
-  
+
   const navigate = useNavigate();
   return (
     <div className="flex min-h-screen relative">
@@ -25,17 +25,15 @@ function Experience({ data, setData }) {
               თანამდებობა
             </label>
             <input
-              onChange={(e) =>
-                setData((props) => {
-                  return {
+              onChange={(e) => {
+                const clone = data.experiences[0].position = e.target.value;
+                setData((props)=>{
+                  return{
                     ...props,
-                    experiences: {
-                      ...props.experiences,
-                      position: e.target.value,
-                    },
-                  };
-                })
-              }
+                  clone
+                  }
+                });
+              }}
               className="textinput w-full my-2"
               type="text"
               name="name"
@@ -47,17 +45,15 @@ function Experience({ data, setData }) {
               დამსაქმებელი
             </label>
             <input
-              onChange={(e) =>
-                setData((props) => {
-                  return {
+              onChange={(e) => {
+                const clone = data.experiences[0].employer = e.target.value;
+                setData((props)=>{
+                  return{
                     ...props,
-                    experiences : {
-                      ...props.experiences,
-                      employer: e.target.value,
-                    }
-                  };
-                })
-              }
+                  clone
+                  }
+                });
+              }}
               className="textinput w-full my-2"
               type="text"
               name="surname"
@@ -69,17 +65,15 @@ function Experience({ data, setData }) {
           <form>
             <label htmlFor="startDate">დაწყების რიცხვი</label>
             <input
-              onChange={(e) =>
-                setData((props) => {
-                  return {
+              onChange={(e) => {
+                const clone = data.experiences[0].start_date = e.target.value;
+                setData((props)=>{
+                  return{
                     ...props,
-                    experiences : {
-                      ...props.experiences,
-                      start_date: e.target.value,
-                    }
-                  };
-                })
-              }
+                  clone
+                  }
+                });
+              }}
               className="textinput w-full"
               type="date"
               name="startDate"
@@ -88,17 +82,15 @@ function Experience({ data, setData }) {
           <form>
             <label htmlFor="startDate">დამთავრების რიცხვი</label>
             <input
-              onChange={(e) =>
-                setData((props) => {
-                  return {
+              onChange={(e) => {
+                const clone = data.experiences[0].due_date = e.target.value;
+                setData((props)=>{
+                  return{
                     ...props,
-                    experiences : {
-                      ...props.experiences,
-                      due_date: e.target.value,
-                    }
-                  };
-                })
-              }
+                  clone
+                  }
+                });
+              }}
               className="textinput w-full"
               type="date"
               name="startDate"
@@ -108,17 +100,15 @@ function Experience({ data, setData }) {
         <form className="flex flex-col">
           <label htmlFor="description">აღწერა</label>
           <textarea
-            onChange={(e) =>
-              setData((props) => {
-                return {
+            onChange={(e) => {
+              const clone = data.experiences[0].description = e.target.value;
+              setData((props)=>{
+                return{
                   ...props,
-                  experiences:{
-                    ...props.experiences,
-                    description: e.target.value
-                  }
-                };
-              })
-            }
+                clone
+                }
+              });
+            }}
             className="px-4 py-1 resize-none border border-[#BCBCBC]"
             name="description"
             id=""
@@ -127,7 +117,9 @@ function Experience({ data, setData }) {
           ></textarea>
         </form>
         <hr className="h-px mt-14 mb-8 border-0" />
-        <button className="moreexperiencebutton mb-5">მეტი გამოცდილების დამატება</button>
+        <button className="moreexperiencebutton mb-5">
+          მეტი გამოცდილების დამატება
+        </button>
         <div className="buttons flex flex-row justify-between">
           <button onClick={() => navigate("/personal")}>უკან</button>
           <button onClick={() => navigate("/education")}>შემდეგი</button>
@@ -160,18 +152,44 @@ function Experience({ data, setData }) {
           </p>
         </div>
         <hr className="mt-5 mb-6" />
-        <div>
-          {data.experiences && (<h2 className=" font-bold text-lg text-[#F93B1D]">გამოცდილება</h2>)}
+       {data.experiences.map(({position,employer,start_date,due_date,description})=>{
+        return (
+          <div>
+          {data.experiences && (
+            <h2 className=" font-bold text-lg text-[#F93B1D]">გამოცდილება</h2>
+          )}
           <div className="flex mt-4">
-          {data.experiences.position && (<h1 className="text-[#1A1A1A] font-medium text-base leading-5">{data.experiences.position},&nbsp;</h1>)}
-          {data.experiences.employer && (<span className="text-[#1A1A1A] font-medium text-base leading-5">{data.experiences.employer}</span>)}
+            {position && (
+              <h1 className="text-[#1A1A1A] font-medium text-base leading-5">
+                {position},&nbsp;
+              </h1>
+            )}
+            {employer && (
+              <span className="text-[#1A1A1A] font-medium text-base leading-5">
+                {employer}
+              </span>
+            )}
           </div>
           <div className="dates flex mb-4">
-            {data.experiences.start_date && (<p className="text-[#909090] text-base font-normal italic">{data.experiences.start_date}&nbsp;-</p>)}
-            {data.experiences.due_date && (<p className="text-[#909090] text-base font-normal italic">&nbsp;{data.experiences.due_date}</p>)}
+            {start_date && (
+              <p className="text-[#909090] text-base font-normal italic">
+                {start_date}&nbsp;-
+              </p>
+            )}
+            {due_date && (
+              <p className="text-[#909090] text-base font-normal italic">
+                &nbsp;{due_date}
+              </p>
+            )}
           </div>
-          {data.experiences.description && (<p className="font-normal text-base capitalize leading-6 text-black">{data.experiences.description}</p>)}
+          {description && (
+            <p className="font-normal text-base capitalize leading-6 text-black">
+              {description}
+            </p>
+          )}
         </div>
+        )
+       })}
 
         <img
           src={logoRedberry}

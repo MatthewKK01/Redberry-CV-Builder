@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import MainPage from "./Pages/mainPage/mainPage.jsx";
 import Registration from "./Pages/Registration/Registration.jsx";
 import Experience from "./Pages/Experience/Experience.jsx";
@@ -64,6 +64,17 @@ function App() {
       about_me: ""
     })
   }
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+  }, [data]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+     setData(data);
+    }
+  }, []);
 
   return (
     <Routes>
