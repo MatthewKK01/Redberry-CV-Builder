@@ -19,12 +19,13 @@ function Experience({ data, setData,renderImage,clearState }) {
           <h2 className="mb-3 text-2xl font-bold">გამოცდილება</h2>
           <h4 className="text-xl font-normal">2/3</h4>
         </header>
-        <div className="flex flex-col gap-8 justify-between mb-8">
+        <form className="flex flex-col gap-8 justify-between mb-8">
           <form className="flex flex-col">
             <label className=" font-medium text-base" htmlFor="name">
               თანამდებობა
             </label>
             <input
+            placeholder="დეველოპერი, დიზაინერი, ა.შ."
             value={data.experiences[0].position}
               onChange={(e) => {
                 const clone = data.experiences[0].position = e.target.value;
@@ -46,6 +47,7 @@ function Experience({ data, setData,renderImage,clearState }) {
               დამსაქმებელი
             </label>
             <input
+            placeholder="დამსაქმებელი"
             value={data.experiences[0].employer}
               onChange={(e) => {
                 const clone = data.experiences[0].employer = e.target.value;
@@ -62,8 +64,8 @@ function Experience({ data, setData,renderImage,clearState }) {
             />
             <p>მინიმუმ სიმბოლო</p>
           </form>
-        </div>
-        <div className="flex flex-row gap-14 justify-between mb-8 ">
+        </form>
+        <form className="flex flex-row gap-14 justify-between mb-8 ">
           <form>
             <label htmlFor="startDate">დაწყების რიცხვი</label>
             <input
@@ -100,10 +102,11 @@ function Experience({ data, setData,renderImage,clearState }) {
               name="startDate"
             />
           </form>
-        </div>
+        </form>
         <form className="flex flex-col">
           <label htmlFor="description">აღწერა</label>
           <textarea
+          placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
           value={data.experiences[0].description}
             onChange={(e) => {
               const clone = data.experiences[0].description = e.target.value;

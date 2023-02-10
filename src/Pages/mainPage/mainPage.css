@@ -37,3 +37,24 @@ a {
   order: 0;
   flex-grow: 0;
 }
+
+.layout-wrap {
+  max-width: 1780px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+main {
+  background-size: cover;
+  height: 100vh;
+  padding: 25px 70px;
+
+}
+
+.header {
+  border-bottom: 1px solid black;
+}
+
+.section-area {
+
+}

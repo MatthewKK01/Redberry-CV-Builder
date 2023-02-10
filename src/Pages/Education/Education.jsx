@@ -16,7 +16,6 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
         "https://resume.redberryinternship.ge/api/degrees"
       );
       setArray(result.data);
-      console.log(result.data);
     };
     fetchData();
   }, []);
@@ -47,6 +46,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
             სასწავლებელი
           </label>
           <input
+          placeholder="სასწავლებელი"
             value={data.educations[0].institute}
             onChange={(e) => {
               const clone1 = (data.educations[0].institute = e.target.value);
@@ -63,13 +63,14 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
           />
           <p>მინიმუმ 2 სიმბოლო</p>
         </form>
-        <div className="flex gap-14 justify-between mb-9">
+        <form className="flex gap-14 justify-between mb-9">
           <form className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="degree">
               ხარისხი
             </label>
             <select
               className="textinput"
+              placeholder="აირჩიეთ ხარისხი"
               value={data.educations[0].degree_id}
               onChange={(e) => {
                 const clone1 = (data.educations[0].degree_id = e.target.value);
@@ -111,7 +112,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
               name="due_date"
             />
           </form>
-        </div>
+        </form>
         <form className="flex flex-col">
           <label htmlFor="description" className="mb-2 font-medium text-base">
             აღწერა
@@ -129,7 +130,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
             }}
             className="px-4 py-1 resize-none border border-[#BCBCBC]"
             name="description"
-            id=""
+            placeholder="განათლების აღწერა"
             cols="10"
             rows="6"
           ></textarea>

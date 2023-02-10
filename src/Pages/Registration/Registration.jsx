@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import backButton from "../../assets/images/backButton.svg";
 import "../Registration/Registration.css";
@@ -6,12 +6,15 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
-function Registration({ data, setData, clearState,handleImageChange,renderImage }) {
+function Registration({
+  data,
+  setData,
+  clearState,
+  handleImageChange,
+  renderImage,
+}) {
   const navigate = useNavigate();
 
-
-
- 
   return (
     <div className="flex min-h-screen relative">
       <section className="bg-slate-100 w-3/5 gap-10 px-36 py-12">
@@ -27,13 +30,13 @@ function Registration({ data, setData, clearState,handleImageChange,renderImage 
           <h2 className="mb-3 text-2xl font-bold">პირადი ინფო</h2>
           <h4 className="text-xl font-normal">1/3</h4>
         </header>
-        <div className="flex gap-14 justify-between mb-14">
+        <form className="flex gap-14 justify-between mb-14">
           <form className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="name">
               სახელი
             </label>
             <input
-              value={data.name }
+              value={data.name}
               onChange={(e) =>
                 setData((props) => {
                   return {
@@ -68,16 +71,17 @@ function Registration({ data, setData, clearState,handleImageChange,renderImage 
             />
             <p className="mt-2">მინიმუმ 2 ასო, ქართული ასოები</p>
           </form>
-        </div>
-        <div className="flex flex-row mb-8">
+        </form>
+        <form className="flex flex-row mb-8">
           <label htmlFor="photo">პირადი ფოტოს ატვირთვა</label>
           <label htmlFor="">
             <input onChange={handleImageChange} type="file" name="photo" />
           </label>
-        </div>
-        <div className="flex flex-col mb-8">
+        </form>
+        <form className="flex flex-col mb-8">
           <label htmlFor="about">ჩემ შესახებ (არასავალდებულო)</label>
           <textarea
+            placeholder="ზოგადი ინფო შენ შესახებ"
             value={data.about_me}
             onChange={(e) =>
               setData((props) => {
@@ -93,12 +97,13 @@ function Registration({ data, setData, clearState,handleImageChange,renderImage 
             cols="10"
             rows="4"
           ></textarea>
-        </div>
-        <div className="flex flex-col mb-8">
+        </form>
+        <form className="flex flex-col mb-8">
           <label className="mb-2 font-medium text-base" htmlFor="email">
             ელ.ფოსტა
           </label>
           <input
+            placeholder="youremailadress@redberry.ge"
             value={data.email}
             onChange={(e) =>
               setData((props) => {
@@ -113,12 +118,13 @@ function Registration({ data, setData, clearState,handleImageChange,renderImage 
             name="email"
           />
           <p className="mt-2">უნდა მთავრდებოდეს @redberry.ge-ით</p>
-        </div>
-        <div className="flex flex-col  mb-8">
+        </form>
+        <form className="flex flex-col  mb-8">
           <label className="mb-2 font-medium text-base" htmlFor="phone">
             მობილურის ნომერი
           </label>
           <input
+            placeholder="+995 xxx xx xx xx"
             value={data.phone_number}
             onChange={(e) =>
               setData((props) => {
@@ -135,7 +141,7 @@ function Registration({ data, setData, clearState,handleImageChange,renderImage 
           <p className="mt-2">
             უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
           </p>
-        </div>
+        </form>
         <div className="buttons flex flex-row justify-between">
           <button className="invisible">უკან</button>
           <button onClick={() => navigate("/experience")}>შემდეგი</button>
