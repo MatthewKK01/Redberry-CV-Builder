@@ -9,7 +9,7 @@ import backButton from "../../assets/images/backButton.svg";
 
 
 
-function Result({ data,clearState }) {
+function Result({ data,clearState,renderImage }) {
   toast('რეზიუმე წარმატებით გაიგზავნა  🎉', {
     position: "top-right",
     autoClose: 5000,
@@ -58,9 +58,10 @@ function Result({ data,clearState }) {
             {data.about_me}
           </p>
         </div>
+        {renderImage()}
         <hr className="mt-5 mb-6" />
         {data.experiences.map(
-          ({ position, employer, start_date, due_date, description }) => {
+          ({ position, employer, start_date, due_date, description },index) => {
             return (
               <div>
                 {data.experiences && (
@@ -70,30 +71,30 @@ function Result({ data,clearState }) {
                 )}
                 <div className="flex mt-4">
                   {position && (
-                    <h1 className="text-[#1A1A1A] font-medium text-base leading-5">
+                    <h1 key={index} className="text-[#1A1A1A] font-medium text-base leading-5">
                       {position},&nbsp;
                     </h1>
                   )}
                   {employer && (
-                    <span className="text-[#1A1A1A] font-medium text-base leading-5">
+                    <span key={index} className="text-[#1A1A1A] font-medium text-base leading-5">
                       {employer}
                     </span>
                   )}
                 </div>
                 <div className="dates flex mb-4">
                   {start_date && (
-                    <p className="text-[#909090] text-base font-normal italic">
+                    <p key={index} className="text-[#909090] text-base font-normal italic">
                       {start_date}&nbsp;-
                     </p>
                   )}
                   {due_date && (
-                    <p className="text-[#909090] text-base font-normal italic">
+                    <p key={index} className="text-[#909090] text-base font-normal italic">
                       &nbsp;{due_date}
                     </p>
                   )}
                 </div>
                 {description && (
-                  <p className="font-normal text-base capitalize leading-6 text-black">
+                  <p key={index} className="font-normal text-base capitalize leading-6 text-black">
                     {description}
                   </p>
                 )}

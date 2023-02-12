@@ -6,6 +6,7 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
+
 function Experience({ data, setData,renderImage,clearState }) {
 
   const navigate = useNavigate();
@@ -15,12 +16,14 @@ function Experience({ data, setData,renderImage,clearState }) {
         <Link to="/">
           <img onClick={clearState} src={backButton} alt="backButton" className="absolute left-12" />
         </Link>
+        
         <header className="mb-20 flex flex-row items-center justify-between w-full border-b-2 border-black">
           <h2 className="mb-3 text-2xl font-bold">გამოცდილება</h2>
           <h4 className="text-xl font-normal">2/3</h4>
         </header>
-        <form className="flex flex-col gap-8 justify-between mb-8">
-          <form className="flex flex-col">
+        <form action="">
+        <div className="flex flex-col gap-8 justify-between mb-8">
+          <div className="flex flex-col">
             <label className=" font-medium text-base" htmlFor="name">
               თანამდებობა
             </label>
@@ -41,8 +44,8 @@ function Experience({ data, setData,renderImage,clearState }) {
               name="name"
             />
             <p>მინიმუმ 2 სიმბოლო</p>
-          </form>
-          <form className="flex flex-col">
+          </div>
+          <div className="flex flex-col">
             <label className=" font-medium text-base" htmlFor="surname">
               დამსაქმებელი
             </label>
@@ -63,10 +66,10 @@ function Experience({ data, setData,renderImage,clearState }) {
               name="surname"
             />
             <p>მინიმუმ სიმბოლო</p>
-          </form>
-        </form>
-        <form className="flex flex-row gap-14 justify-between mb-8 ">
-          <form>
+          </div>
+        </div>
+        <div className="flex flex-row gap-14 justify-between mb-8 ">
+          <div>
             <label htmlFor="startDate">დაწყების რიცხვი</label>
             <input
             value={data.experiences[0].start_date}
@@ -83,8 +86,8 @@ function Experience({ data, setData,renderImage,clearState }) {
               type="date"
               name="startDate"
             />
-          </form>
-          <form>
+          </div>
+          <div>
             <label htmlFor="startDate">დამთავრების რიცხვი</label>
             <input
             value={data.experiences[0].due_date}
@@ -101,9 +104,9 @@ function Experience({ data, setData,renderImage,clearState }) {
               type="date"
               name="startDate"
             />
-          </form>
-        </form>
-        <form className="flex flex-col">
+          </div>
+        </div>
+        <div className="flex flex-col">
           <label htmlFor="description">აღწერა</label>
           <textarea
           placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
@@ -123,11 +126,12 @@ function Experience({ data, setData,renderImage,clearState }) {
             cols="10"
             rows="4"
           ></textarea>
-        </form>
+        </div>
         <hr className="h-px mt-14 mb-8 border-0" />
         <button className="moreexperiencebutton mb-5">
           მეტი გამოცდილების დამატება
         </button>
+        </form>
         <div className="buttons flex flex-row justify-between">
           <button onClick={() => navigate("/personal")}>უკან</button>
           <button onClick={() => navigate("/education")}>შემდეგი</button>
@@ -161,7 +165,7 @@ function Experience({ data, setData,renderImage,clearState }) {
         </div>
         {renderImage()}
         <hr className="mt-5 mb-6" />
-       {data.experiences.map(({position,employer,start_date,due_date,description})=>{
+       {data.experiences.map(({position,employer,start_date,due_date,description},index)=>{
         return (
           <div>
           {data.experiences && (
@@ -169,30 +173,30 @@ function Experience({ data, setData,renderImage,clearState }) {
           )}
           <div className="flex mt-4">
             {position && (
-              <h1 className="text-[#1A1A1A] font-medium text-base leading-5">
+              <h1 key={index} className="text-[#1A1A1A] font-medium text-base leading-5">
                 {position},&nbsp;
               </h1>
             )}
             {employer && (
-              <span className="text-[#1A1A1A] font-medium text-base leading-5">
+              <span key={index} className="text-[#1A1A1A] font-medium text-base leading-5">
                 {employer}
               </span>
             )}
           </div>
           <div className="dates flex mb-4">
             {start_date && (
-              <p className="text-[#909090] text-base font-normal italic">
+              <p key={index} className="text-[#909090] text-base font-normal italic">
                 {start_date}&nbsp;-
               </p>
             )}
             {due_date && (
-              <p className="text-[#909090] text-base font-normal italic">
+              <p key={index} className="text-[#909090] text-base font-normal italic">
                 &nbsp;{due_date}
               </p>
             )}
           </div>
           {description && (
-            <p className="font-normal text-base capitalize leading-6 text-black">
+            <p key={index} className="font-normal text-base capitalize leading-6 text-black">
               {description}
             </p>
           )}

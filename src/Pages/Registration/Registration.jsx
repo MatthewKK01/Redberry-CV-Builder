@@ -6,14 +6,22 @@ import emailIcon from "../../assets/images/material-symbols_alternate-email.svg"
 import phoneIcon from "../../assets/images/phone.svg";
 import logoRedberry from "../../assets/images/logo-redberry.svg";
 
+
+
+
 function Registration({
   data,
   setData,
   clearState,
   handleImageChange,
   renderImage,
+  inputRef
 }) {
+
   const navigate = useNavigate();
+
+
+
 
   return (
     <div className="flex min-h-screen relative">
@@ -30,8 +38,9 @@ function Registration({
           <h2 className="mb-3 text-2xl font-bold">პირადი ინფო</h2>
           <h4 className="text-xl font-normal">1/3</h4>
         </header>
-        <form className="flex gap-14 justify-between mb-14">
-          <form className="flex flex-col">
+        <form>
+        <div className="flex gap-14 justify-between mb-14">
+          <div className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="name">
               სახელი
             </label>
@@ -48,10 +57,11 @@ function Registration({
               className="textinput w-[370px]"
               type="text"
               name="name"
+              id="name"
             />
             <p>მინიმუმ 2 ასო, ქართული ასოები</p>
-          </form>
-          <form className="flex flex-col">
+          </div>
+          <div className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="surname">
               გვარი
             </label>
@@ -68,18 +78,19 @@ function Registration({
               className="textinput w-[370px] min-w-[200px]"
               type="text"
               name="surname"
+              id="surname"
             />
             <p className="mt-2">მინიმუმ 2 ასო, ქართული ასოები</p>
-          </form>
-        </form>
-        <form className="flex flex-row mb-8">
+          </div>
+        </div>
+        <div className="flex flex-row mb-8">
           <label htmlFor="photo">პირადი ფოტოს ატვირთვა</label>
           <label htmlFor="">
             <input onChange={handleImageChange} type="file" name="photo" />
           </label>
-        </form>
-        <form className="flex flex-col mb-8">
-          <label htmlFor="about">ჩემ შესახებ (არასავალდებულო)</label>
+        </div>
+        <div className="flex flex-col mb-8">
+          <label htmlFor="about_me">ჩემ შესახებ (არასავალდებულო)</label>
           <textarea
             placeholder="ზოგადი ინფო შენ შესახებ"
             value={data.about_me}
@@ -92,13 +103,13 @@ function Registration({
               })
             }
             className="px-4 py-1 resize-none border border-[#BCBCBC]"
-            name="about"
-            id=""
+            name="about_me"
+            id="about_me"
             cols="10"
             rows="4"
           ></textarea>
-        </form>
-        <form className="flex flex-col mb-8">
+        </div>
+        <div className="flex flex-col mb-8">
           <label className="mb-2 font-medium text-base" htmlFor="email">
             ელ.ფოსტა
           </label>
@@ -116,11 +127,12 @@ function Registration({
             className="textinput"
             type="email"
             name="email"
+            id="email"
           />
           <p className="mt-2">უნდა მთავრდებოდეს @redberry.ge-ით</p>
-        </form>
-        <form className="flex flex-col  mb-8">
-          <label className="mb-2 font-medium text-base" htmlFor="phone">
+        </div>
+        <div className="flex flex-col  mb-8">
+          <label className="mb-2 font-medium text-base" htmlFor="phone_number">
             მობილურის ნომერი
           </label>
           <input
@@ -136,17 +148,21 @@ function Registration({
             }
             className="textinput"
             type="number"
-            name="phone"
+            name="phone_number"
+            id="phone_number"
           />
           <p className="mt-2">
             უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
           </p>
+        </div>
         </form>
         <div className="buttons flex flex-row justify-between">
           <button className="invisible">უკან</button>
           <button onClick={() => navigate("/experience")}>შემდეგი</button>
         </div>
       </section>
+
+      
       <section className="w-2/5 p-20 relative">
         <div className="flex gap-5 mb-4">
           <h1 className="font-bols text-4xl text-[#F93B1D]">{data.name}</h1>

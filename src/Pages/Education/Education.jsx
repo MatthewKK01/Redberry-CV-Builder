@@ -41,7 +41,8 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
           <h2 className="mb-3 text-2xl font-bold">განათლება</h2>
           <h4 className="text-xl font-normal">3/3</h4>
         </header>
-        <form className="flex flex-col mb-8">
+        <form action="">
+        <div className="flex flex-col mb-8">
           <label className=" font-medium text-base" htmlFor="name">
             სასწავლებელი
           </label>
@@ -62,9 +63,9 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
             name="name"
           />
           <p>მინიმუმ 2 სიმბოლო</p>
-        </form>
-        <form className="flex gap-14 justify-between mb-9">
-          <form className="flex flex-col">
+        </div>
+        <div className="flex gap-14 justify-between mb-9">
+          <div className="flex flex-col">
             <label className="mb-2 font-medium text-base" htmlFor="degree">
               ხარისხი
             </label>
@@ -85,14 +86,14 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
             >
               {array.map((item, index) => {
                 return (
-                  <option className="textinput" key={item.id} value={item.id}>
+                  <option className="textinput" key={index} value={item.title}>
                     {item.title}
                   </option>
                 );
               })}
             </select>
-          </form>
-          <form className="flex flex-col mb-8">
+          </div>
+          <div className="flex flex-col mb-8">
             <label className="mb-2 font-medium text-base" htmlFor="due_date">
               დამთავრების რიცხვი
             </label>
@@ -111,9 +112,9 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
               type="date"
               name="due_date"
             />
-          </form>
-        </form>
-        <form className="flex flex-col">
+          </div>
+        </div>
+        <div className="flex flex-col">
           <label htmlFor="description" className="mb-2 font-medium text-base">
             აღწერა
           </label>
@@ -134,6 +135,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
             cols="10"
             rows="6"
           ></textarea>
+        </div>
         </form>
         <div className="buttons flex flex-row justify-between">
           <button onClick={() => navigate("/experience")}>უკან</button>
@@ -169,7 +171,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
         {renderImage()}
         <hr className="mt-5 mb-6" />
         {data.experiences.map(
-          ({ position, employer, start_date, due_date, description }) => {
+          ({ position, employer, start_date, due_date, description }, index) => {
             return (
               <div>
                 {data.experiences && (
@@ -213,7 +215,7 @@ function Education({ data, setData, clearState, renderImage,sendDataToBackend })
 
         <hr className="mt-5 mb-6" />
         {data.educations.map(
-          ({ institute, degree_id, due_date, description }) => {
+          ({ institute, degree_id, due_date, description },index) => {
             return (
               <div>
                 {data.educations && (

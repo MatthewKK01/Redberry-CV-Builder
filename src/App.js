@@ -11,7 +11,7 @@ import axios from "axios";
 function App() {
   const [data, setData] = useState(
     {
-      name: "",
+      name:"",
       surname: "",
       email : "",
       phone_number: "",
@@ -36,6 +36,8 @@ function App() {
       about_me: ""
     }
   );
+
+
 
   const clearState = () =>{
     setData({
