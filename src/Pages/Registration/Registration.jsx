@@ -84,9 +84,9 @@ function Registration({
           </div>
         </div>
         <div className="flex flex-row mb-8">
-          <label htmlFor="photo">პირადი ფოტოს ატვირთვა</label>
-          <label htmlFor="">
-            <input onChange={handleImageChange} type="file" name="photo" />
+          <label htmlFor="">პირადი ფოტოს ატვირთვა</label>
+          <label htmlFor="photo" className="imageInput"> დამატება
+            <input className="hidden" onChange={handleImageChange} type="file" id="photo" name="photo" />
           </label>
         </div>
         <div className="flex flex-col mb-8">
